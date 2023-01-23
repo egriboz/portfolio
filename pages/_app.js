@@ -2,6 +2,7 @@ import "../styles/globals.css";
 import { LayoutGroup } from "framer-motion";
 import Header from "../components/Header";
 
+
 function MyApp({ Component, pageProps, router }) {
   return (
     <>
@@ -13,6 +14,7 @@ function MyApp({ Component, pageProps, router }) {
       >
         <Component {...pageProps} key={router.asPath} />
       </LayoutGroup>
+
     </>
   );
 }
