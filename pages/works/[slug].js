@@ -16,7 +16,6 @@ import { motion } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import Pagination from "../../components/Pagination";
 
-
 const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
 const itemVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -99,7 +98,6 @@ const PhotoDetail = () => {
 
   return (
     <Layout>
-
       <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] min-h-screen">
         <div className="p-10">
           <div className="sticky top-10">
@@ -261,7 +259,6 @@ const PhotoDetail = () => {
           />
         </section>
       </div>
-
     </Layout>
   );
 };
