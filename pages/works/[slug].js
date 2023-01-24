@@ -231,6 +231,7 @@ const PhotoDetail = () => {
             <img
               src={photo.src}
               alt={photo.title}
+
               style={{
                 width: "100%",
                 height: "auto",
@@ -242,6 +243,7 @@ const PhotoDetail = () => {
           <img
             src={photo.src}
             alt={photo.title}
+
             style={{
               width: "100%",
               height: "auto",
@@ -251,6 +253,7 @@ const PhotoDetail = () => {
           <img
             src={photo.src}
             alt={photo.title}
+
             style={{
               width: "100%",
               height: "auto",
