@@ -7,6 +7,41 @@ import { photos } from "../data/photos";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
+
+//
+const statuses = {}; // loading, loaded, import calls chain
+
+const loadScript = (src) => {
+  const status = statuses[src] || (statuses[src] = {});
+  if (status.loaded || status.loading) {
+    return status.promise;
+  }
+  status.loading = true;
+  status.promise = new Promise((resolve, reject) => {
+    if (!document.head) {
+      status.loading = false;
+      reject('Load JavaScript file in web site body or after head is ready.');
+      return;
+    }
+    const script = document.createElement('script');
+    script.addEventListener('load', () => {
+      status.loaded = true;
+      status.loading = false;
+      resolve();
+    });
+    script.addEventListener('error', () => {
+      status.loaded = true;
+      status.loading = false;
+      reject('JavaScript file loading error (check script url or network connection).');
+    });
+    script.async = true;
+    script.src = src;
+    script.type = "module";
+    document.head.appendChild(script);
+  });
+  return status.promise;
+};
+//
 export default function Works() {
   const router = useRouter();
   // const { slug } = router.query;
@@ -14,22 +49,76 @@ export default function Works() {
 
   console.log("asPathasPathasPath: ", asPath);
 
+  // useEffect(() => {
+  //   const script = document.createElement('script');
+
+  //   script.src = "external.js";
+  //   script.async = true;
+  //   script.type = "module";
+
+
+  //   document.body.appendChild(script);
+
+  //   return () => {
+  //     document.body.removeChild(script);
+  //   }
+  // }, [asPath]);
+
   useEffect(() => {
-    const script = document.createElement('script');
 
-    script.src = "external.js";
-    script.async = true;
-    script.type = "module";
+    loadScript('https://rawcdn.githack.com/flackr/scroll-timeline/3063e156535f3ab1ffc8a4000ffdd3290232c121/dist/scroll-timeline.js')
+      .then(() => {
+        console.log("Polyfill - scroll-timeline call and THEN...");
+        // Polyfill for browsers with no Scroll-Timeline support
+        // We load a specific version that polyfills the old version of the spec (which uses @scroll-timeline)
+        // because that is how our CSS is written
 
+        // import "https://rawcdn.githack.com/flackr/scroll-timeline/3063e156535f3ab1ffc8a4000ffdd3290232c121/dist/scroll-timeline.js";
 
-    document.body.appendChild(script);
+        // Fallback for browsers that don't support CSS ScrollTimeline
+        // We polyfill:
+        // - Browsers that support the newest version of the spec
+        // - Browsers that don’t support any version of the spec
+        if (CSS.supports("animation-timeline: scroll()") || !CSS.supports("animation-timeline: foo")) {
+          // Replace warning box with info box
+          document.querySelector(".warning").style.display = "none";
+          document.querySelector(".info").style.display = "block";
 
-    return () => {
-      document.body.removeChild(script);
-    }
+          // As we're about to shift content out of .columns, we need it to hide its overflow
+          document.querySelector(".columns").style.overflowY = "hidden";
+
+          // Set up timeline
+          const timeline = new ScrollTimeline({
+            scrollSource: document.documentElement,
+            timeRange: 1,
+            fill: "both"
+          });
+
+          // Loop all eligible columns
+          document.querySelectorAll(".column-reverse").forEach(($column) => {
+            // Flip item order in reverse columns
+            $column.style.flexDirection = "column-reverse";
+
+            // Hook Animation
+            $column.animate(
+              {
+                transform: [
+                  "translateY(calc(-100% + 100vh))",
+                  "translateY(calc(100% - 100vh))"
+                ]
+              },
+              {
+                duration: 1,
+                fill: "both",
+                timeline
+              }
+            );
+          });
+        }
+      })
+      .catch(console.error);
+
   }, [asPath]);
-
-
 
   return (
 
@@ -91,7 +180,7 @@ export default function Works() {
                 <div className="column__item-imgwrap">
                   <Link
                     // href={`/works/${photo.id}`}
-                    scroll={false}
+                    scroll={true}
 
                     href={{
                       pathname: `/works/${photo.slug}`,
