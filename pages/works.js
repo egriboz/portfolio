@@ -180,7 +180,7 @@ export default function Works() {
                 <div className="column__item-imgwrap">
                   <Link
                     // href={`/works/${photo.id}`}
-                    scroll={true}
+                    scroll={false}
 
                     href={{
                       pathname: `/works/${photo.slug}`,

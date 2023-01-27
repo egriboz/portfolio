@@ -1,10 +1,12 @@
 import Link from "next/link";
 import Head from "next/head";
 import Layout from "../components/Layout";
+import { useEffect } from "react";
 import { photos } from "../data/photos";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
+
 export default function Home() {
   return (
     <>
@@ -18,7 +20,6 @@ export default function Home() {
 
           {photos.map((photo, indexOf) => (
             <Link
-              // href={`/works/${photo.id}`}
               scroll={false}
               key={photo.title}
               href={{
@@ -42,8 +43,6 @@ export default function Home() {
             </Link>
           ))}
         </div>
-
-
 
         <footer></footer>
       </Layout>

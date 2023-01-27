@@ -13,7 +13,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { photos } from "../../data/photos";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import Pagination from "../../components/Pagination";
 import Script from "next/script";
@@ -124,26 +124,32 @@ const PhotoDetail = () => {
         <title>Works Detail</title>
       </Head>
 
+      <AnimatePresence>
+        <Layout>
 
-      <Layout>
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] min-h-screen">
-          <div className="p-10">
-            <div className="sticky top-10">
-              <div className="flex justify-between mb-8">
-                <Link href="/">
-                  <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
-                    <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
-                    HOME
-                  </a>
-                </Link>
-                <Link href="/works">
-                  <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
-                    <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
-                    WORKS
-                  </a>
-                </Link>
-                {/* <a
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr,1.5fr] min-h-screen">
+            <div className="p-10">
+              <div className="sticky top-10">
+                <div className="flex justify-between mb-8">
+                  <Link href="/">
+                    <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
+                      <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
+                      HOME
+                    </a>
+                  </Link>
+                  <Link href="/test" scroll={true}>
+                    <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
+                      <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
+                      TEST
+                    </a>
+                  </Link>
+                  <Link href="/works" scroll={false}>
+                    <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
+                      <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
+                      WORKS
+                    </a>
+                  </Link>
+                  {/* <a
                 href={photo.link}
                 target="_blank"
                 rel="noreferrer"
@@ -152,10 +158,10 @@ const PhotoDetail = () => {
                 View Source
                 <ArrowUpRightIcon className="w-4 h-4 text-gray-400 ml-2 group-hover:text-purple-400" />
               </a> */}
-              </div>
-              <div>
-                <hr />
-                {/* <Pagination
+                </div>
+                <div>
+                  <hr />
+                  {/* <Pagination
               photos={photos}
               photoId={photoId}
               items={photos.length} // 100
@@ -165,70 +171,72 @@ const PhotoDetail = () => {
               style={{ border: "1px solid red" }}
             />
             <hr /> */}
-                {photos.map((item, indexOf) => {
-                  return (
-                    <ul key={item.id} className={styles.pagination}>
-                      <li
-                        className={
-                          item.id == currentPage
-                            ? styles.pageItemActive
-                            : styles.pageItem
-                        }
-                      >
-                        <Link
-                          href={{
-                            pathname: `/works/${item.slug}`,
-                            query: { indexOf: indexOf },
-                          }}
+
+                  {photos.map((item, indexOf) => {
+                    return (
+                      <ul key={item.id} className={styles.pagination}>
+                        <li
+                          className={
+                            item.id == currentPage
+                              ? styles.pageItemActive
+                              : styles.pageItem
+                          }
                         >
-                          <a
-                            onClick={() => onPageChange(item.id)}
-                            className={styles.pageLink}
+                          <Link
+                            href={{
+                              pathname: `/works/${item.slug}`,
+                              query: { indexOf: indexOf },
+                            }}
                           >
-                            indexOf:={indexOf}-{item.title}:{indexOf}:
-                            {currentPage}---
-                          </a>
-                        </Link>
-                      </li>
-                    </ul>
-                  );
-                })}
-                <hr />
+                            <a
+                              onClick={() => onPageChange(item.id)}
+                              className={styles.pageLink}
+                            >
+                              indexOf:={indexOf}-{item.title}:{indexOf}:
+                              {currentPage}---
+                            </a>
+                          </Link>
+                        </li>
+                      </ul>
+                    );
+                  })}
 
-                <button
-                  className={
-                    indexOf <= 0 ? styles.disabledButton : styles.enabledButton
-                  }
-                  type="button"
-                  onClick={() =>
-                    router.push({
-                      pathname: `/works/${getPagePrev[prevPage]}`,
-                      query: { indexOf: prevPage },
-                    })
-                  }
-                >
-                  PREV
-                </button>
+                  <hr />
 
-                <button
-                  className={
-                    indexOf == totalPage - 1
-                      ? styles.disabledButton
-                      : styles.enabledButton
-                  }
-                  type="button"
-                  onClick={() =>
-                    router.push({
-                      pathname: `/works/${getPageNext[nextPage]}`,
-                      query: { indexOf: nextPage },
-                    })
-                  }
-                >
-                  NEXT
-                </button>
+                  <button
+                    className={
+                      indexOf <= 0 ? styles.disabledButton : styles.enabledButton
+                    }
+                    type="button"
+                    onClick={() =>
+                      router.push({
+                        pathname: `/works/${getPagePrev[prevPage]}`,
+                        query: { indexOf: prevPage },
+                      })
+                    }
+                  >
+                    PREV
+                  </button>
 
-                <hr />
-                {/* 
+                  <button
+                    className={
+                      indexOf == totalPage - 1
+                        ? styles.disabledButton
+                        : styles.enabledButton
+                    }
+                    type="button"
+                    onClick={() =>
+                      router.push({
+                        pathname: `/works/${getPageNext[nextPage]}`,
+                        query: { indexOf: nextPage },
+                      })
+                    }
+                  >
+                    NEXT
+                  </button>
+
+                  <hr />
+                  {/* 
             <div>
               {photos.map((item) => {
                 return <p key={item.id}>
@@ -239,30 +247,42 @@ const PhotoDetail = () => {
               })}
             </div>
             <hr /> */}
-              </div>
-              <h2 className="text-4xl font-bold tracking-tight">{photo.title}</h2>
-              <div className="mt-5 text-sm text-gray-600 space-y-2">
-                <p className="flex items-center">
-                  <CameraIcon className="w-4 h-4 mr-2 text-purple-500" />
-                  {photo.author}
-                </p>
-                <p className="flex items-center">
-                  <MapPinIcon className="w-4 h-4 mr-2 text-purple-500" />
-                  {photo.location}
-                </p>
-                <p className="flex items-center">
-                  <CalendarDaysIcon className="w-4 h-4 mr-2 text-purple-500" />
-                  {photo.date}
-                </p>
-              </div>
-              <div className="mt-5 text-sm text-gray-500 space-y-5">
-                <LoremIpsum p={2} />
+                </div>
+                <h2 className="text-4xl font-bold tracking-tight">{photo.title}</h2>
+                <div className="mt-5 text-sm text-gray-600 space-y-2">
+                  <p className="flex items-center">
+                    <CameraIcon className="w-4 h-4 mr-2 text-purple-500" />
+                    {photo.author}
+                  </p>
+                  <p className="flex items-center">
+                    <MapPinIcon className="w-4 h-4 mr-2 text-purple-500" />
+                    {photo.location}
+                  </p>
+                  <p className="flex items-center">
+                    <CalendarDaysIcon className="w-4 h-4 mr-2 text-purple-500" />
+                    {photo.date}
+                  </p>
+                </div>
+                <div className="mt-5 text-sm text-gray-500 space-y-5">
+                  <LoremIpsum p={2} />
+                </div>
               </div>
             </div>
-          </div>
-          {/* <div className="overflow-hidden flex"> */}
-          <section className="bg-slate-200">
-            <motion.div layoutId={`${indexOf}`} className="">
+            {/* <div className="overflow-hidden flex"> */}
+            <section className="bg-slate-200">
+              <motion.div layoutId={`${indexOf}`} className="">
+                <img
+                  src={photo.src}
+                  alt={photo.title}
+
+                  style={{
+                    width: "100%",
+                    height: "auto",
+                    marginBottom: "15px",
+                  }}
+                />
+              </motion.div>
+
               <img
                 src={photo.src}
                 alt={photo.title}
@@ -273,31 +293,20 @@ const PhotoDetail = () => {
                   marginBottom: "15px",
                 }}
               />
-            </motion.div>
+              <img
+                src={photo.src}
+                alt={photo.title}
 
-            <img
-              src={photo.src}
-              alt={photo.title}
-
-              style={{
-                width: "100%",
-                height: "auto",
-                marginBottom: "15px",
-              }}
-            />
-            <img
-              src={photo.src}
-              alt={photo.title}
-
-              style={{
-                width: "100%",
-                height: "auto",
-                marginBottom: "15px",
-              }}
-            />
-          </section>
-        </div>
-      </Layout>
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  marginBottom: "15px",
+                }}
+              />
+            </section>
+          </div>
+        </Layout>
+      </AnimatePresence>
     </>
   );
 };
