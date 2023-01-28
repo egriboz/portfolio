@@ -11,12 +11,14 @@ import Layout from "../../components/Layout/works";
 import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useEffect, useContext, useState } from "react";
 import { photos } from "../../data/photos";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import Pagination from "../../components/Pagination";
 import Script from "next/script";
+import { THEME } from '../../components/Theme'
+import ThemeContext from '../../components/ThemeContext';
 const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
 const itemVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -24,6 +26,7 @@ const itemVariants = {
 };
 
 const PhotoDetail = () => {
+  const store = useContext(ThemeContext)
   const router = useRouter();
   console.log("router ==> ", { router });
   const { slug } = router.query;

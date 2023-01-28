@@ -119,6 +119,45 @@ export default function Works() {
       .catch(console.error);
 
   }, [asPath]);
+  // const [scrollPosition, setScrollPosition] = useState(0);
+
+  // const handleScroll = () => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  //   localStorage.setItem('SCROLL_POSITION', position)
+  //   console.log("position", position);
+  //   setTimeout(() => {
+  //     const currentPosition = localStorage.getItem('SCROLL_POSITION')
+  //     window.scrollTo(0, currentPosition);
+  //     console.log("currentPosition", currentPosition);
+  //   }, 1000);
+
+  // };
+  // useEffect(() => {
+  //   window.addEventListener('scroll', handleScroll, { passive: true });
+
+  //   return () => {
+  //     window.removeEventListener('scroll', handleScroll);
+  //   };
+  // }, [asPath]);
+
+
+  const [scrollPosition, setScrollPosition] = useState(0);
+  useEffect(() => {
+    const position = window.pageYOffset;
+    setScrollPosition(position);
+    localStorage.setItem('SCROLL_POSITION', position)
+    console.log("position", position);
+    setTimeout(() => {
+      const currentPosition = localStorage.getItem('SCROLL_POSITION')
+      window.scrollTo(0, currentPosition);
+      console.log("currentPosition", currentPosition);
+    }, 1000);
+
+    return () => {
+
+    };
+  }, [asPath]);
 
   return (
 
