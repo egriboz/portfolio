@@ -146,7 +146,7 @@ const PhotoDetail = () => {
                       TEST
                     </a>
                   </Link>
-                  <Link href="/works" scroll={false}>
+                  <Link href="/works">
                     <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
                       <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
                       WORKS

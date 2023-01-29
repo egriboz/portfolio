@@ -142,22 +142,47 @@ export default function Works() {
   // }, [asPath]);
 
 
-  const [scrollPosition, setScrollPosition] = useState(0);
+  // const [scrollPosition, setScrollPosition] = useState(0);
+  // useEffect(() => {
+  //   const position = window.pageYOffset;
+  //   setScrollPosition(position);
+  //   localStorage.setItem('SCROLL_POSITION', position)
+  //   console.log("position", position);
+  //   setTimeout(() => {
+  //     const currentPosition = localStorage.getItem('SCROLL_POSITION')
+  //     window.scrollTo(0, currentPosition);
+  //     console.log("currentPosition", currentPosition);
+  //   }, 1000);
+
+  //   return () => {
+
+  //   };
+  // }, [asPath]);
+
+
   useEffect(() => {
-    const position = window.pageYOffset;
-    setScrollPosition(position);
-    localStorage.setItem('SCROLL_POSITION', position)
-    console.log("position", position);
-    setTimeout(() => {
-      const currentPosition = localStorage.getItem('SCROLL_POSITION')
-      window.scrollTo(0, currentPosition);
-      console.log("currentPosition", currentPosition);
-    }, 1000);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-    return () => {
+  const handleScroll = () => {
+    localStorage.setItem('scrollPos', window.pageYOffset);
+    console.log("set");
+  };
 
-    };
-  }, [asPath]);
+  const [scrollPos, setScrollPos] = useState(0);
+
+  useEffect(() => {
+    const storedScrollPos = localStorage.getItem('scrollPos');
+    setScrollPos(storedScrollPos || 0);
+    console.log("get");
+    // return () => localStorage.removeItem('scrollPos');
+  }, []);
+
+  useEffect(() => {
+    window.scrollTo(0, scrollPos);
+  }, [scrollPos]);
+
 
   return (
 
@@ -219,7 +244,7 @@ export default function Works() {
                 <div className="column__item-imgwrap">
                   <Link
                     // href={`/works/${photo.id}`}
-                    scroll={false}
+
 
                     href={{
                       pathname: `/works/${photo.slug}`,
