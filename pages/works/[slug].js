@@ -17,8 +17,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import Pagination from "../../components/Pagination";
 import Script from "next/script";
-import { THEME } from '../../components/Theme'
-import ThemeContext from '../../components/ThemeContext';
+
 const visible = { opacity: 1, y: 0, transition: { duration: 0.5 } };
 const itemVariants = {
   hidden: { opacity: 0, y: 10 },
@@ -26,7 +25,7 @@ const itemVariants = {
 };
 
 const PhotoDetail = () => {
-  const store = useContext(ThemeContext)
+
   const router = useRouter();
   console.log("router ==> ", { router });
   const { slug } = router.query;
@@ -102,6 +101,12 @@ const PhotoDetail = () => {
       return item.slug;
     }
   });
+
+  // const getPagePrev = photos.filter((item, index) => index === prevPage).map(item => item.slug);
+
+
+  console.log("getPagePrev FILTER", getPagePrev);
+
   console.log("getPagePrev:getPagePrev:", getPagePrev[prevPage])
   const getPageNext = photos.map((item, index) => {
     if (index == nextPage) {
@@ -146,10 +151,17 @@ const PhotoDetail = () => {
                       TEST
                     </a>
                   </Link>
+
                   <Link href="/works">
                     <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
                       <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
                       WORKS
+                    </a>
+                  </Link>
+                  <Link href="/portfolio">
+                    <a className="inline-flex items-center rounded-md border border-gray-300 bg-white pl-3 pr-4 py-2 text-sm font-medium text-gray-700 hover:text-white hover:bg-purple-600 hover:border-purple-600 focus:border-purple-200 focus:outline-0 focus:ring-2 focus:ring-purple-300 group">
+                      <ArrowSmallLeftIcon className="w-5 h-5 mr-2 text-gray-300 group-hover:text-purple-200" />
+                      FOLIO
                     </a>
                   </Link>
                   {/* <a

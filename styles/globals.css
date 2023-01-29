@@ -291,36 +291,3 @@ body.menu-toggled > .meta-link > span {
   font-family: "Rubik", sans-serif;
   font-weight: 500;
 }
-
-/* ------------------------------- */
-.App {
-  font-family: sans-serif;
-  text-align: center;
-}
-
-body {
-  padding: 0px;
-  margin: 0px;
-}
-
-.main_items_container {
-  width: 100vw;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: fixed;
-}
-
-.main_items_container .main_items_container_child {
-  width: 50%;
-  height: 100vh;
-}
-
-.container-content-block {
-  height: 180px;
-  border: 1px solid black;
-  display: flex;
-  margin: 40px 20px;
-  justify-content: center;
-  align-items: center;
-}
