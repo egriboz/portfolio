@@ -2,7 +2,7 @@ export const photos = [
   {
     id: 0,
     slug: "sifir",
-    src: "https://images.unsplash.com/photo-1526731530795-375e081e6154?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://cdn.dribbble.com/userupload/3492769/file/original-178b3dfe19e53f660a537b61dc987926.gif?compress=1&resize=752x",
     title: "Summer is here at last.",
     author: "Photo by Paul Rysz",
     location: "Aberdeen, United Kingdom",
@@ -24,7 +24,7 @@ export const photos = [
   {
     id: 2,
     slug: "iki",
-    src: "https://images.unsplash.com/photo-1604323840993-31ba40161d04?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://cdn.dribbble.com/userupload/4143924/file/original-fe507ea1eb854e64586f117ac98d8d5d.gif?compress=1&resize=752x",
     title: "Visit Venice at least once in your life!",
     author: "Photo by Alen Rojnic",
     location: "Venice, Italy",
@@ -35,7 +35,7 @@ export const photos = [
   {
     id: 3,
     slug: "uc",
-    src: "https://images.unsplash.com/photo-1607344563948-8eb7855393b0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://cdn.dribbble.com/users/247458/screenshots/10867264/media/8481a7a65c94b00ab9b12917502bff39.jpg",
     title: "Streams of peace",
     author: "Photo by Neil Mark Thomas",
     location: "Llyn Ogwen, United Kingdom",
@@ -57,7 +57,7 @@ export const photos = [
   {
     id: 5,
     slug: "bes",
-    src: "https://images.unsplash.com/photo-1603659514658-cb2ea72620bd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=963&q=80",
+    src: "https://cdn.dribbble.com/users/623168/screenshots/17067961/media/fdfccd1cbe624186adad495d232f23c9.png",
     title: "Cedars for days",
     author: "Photo by Elias Maurer",
     location: "Rote Wand, Tyrnau, Österreich",
@@ -68,7 +68,7 @@ export const photos = [
   {
     id: 6,
     slug: "alti",
-    src: "https://images.unsplash.com/photo-1609154767012-331529e7d73b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://cdn.dribbble.com/userupload/3962973/file/original-c5c923634ac3579697ba643830c5f8bf.gif?compress=1&resize=1024x768",
     title: "Surreal bench at sunrise",
     author: "Photo by Egzon Muliqi",
     location: "Unknown",
@@ -134,7 +134,7 @@ export const photos = [
   {
     id: 12,
     slug: "oniki",
-    src: "https://cdn.dribbble.com/userupload/4294593/file/original-3de46cd4477ac8d12e9482e2b5cc9723.png?compress=1&resize=1024x768",
+    src: "https://cdn.dribbble.com/userupload/3842131/file/original-0d5798463aee4b96801030b6a7faf9fb.gif?compress=1&resize=752x",
     title: "Istanbul",
     author: "Photo by ",
     location: "Del Valle Regional Park, CA, US",
