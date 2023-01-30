@@ -13,7 +13,7 @@ export const photos = [
   {
     id: 1,
     slug: "bir",
-    src: "https://images.unsplash.com/photo-1554311825-6f9e499ba167?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/cbe7bd145260285.629b6bf4aed27.png",
     title: "Sunrise over the rocks",
     author: "Photo by David Boca",
     location: "Peroj, Croatia",
@@ -46,7 +46,7 @@ export const photos = [
   {
     id: 4,
     slug: "dort",
-    src: "https://images.unsplash.com/photo-1509839914329-d4beac94085f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/3c5587146156815.62bb1f689c3a5.png",
     title: "Teal in the artic",
     author: "Photo by Ernesto Leon",
     location: "Huascaran, Peru",
@@ -57,7 +57,7 @@ export const photos = [
   {
     id: 5,
     slug: "bes",
-    src: "https://cdn.dribbble.com/users/623168/screenshots/17067961/media/fdfccd1cbe624186adad495d232f23c9.png",
+    src: "https://cdn.dribbble.com/userupload/3962973/file/original-c5c923634ac3579697ba643830c5f8bf.gif?compress=1&resize=1024x768",
     title: "Cedars for days",
     author: "Photo by Elias Maurer",
     location: "Rote Wand, Tyrnau, Österreich",
@@ -68,7 +68,7 @@ export const photos = [
   {
     id: 6,
     slug: "alti",
-    src: "https://cdn.dribbble.com/userupload/3962973/file/original-c5c923634ac3579697ba643830c5f8bf.gif?compress=1&resize=1024x768",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/19a0c4155898777.635d351335115.gif",
     title: "Surreal bench at sunrise",
     author: "Photo by Egzon Muliqi",
     location: "Unknown",
@@ -79,7 +79,7 @@ export const photos = [
   {
     id: 7,
     slug: "yedi",
-    src: "https://images.unsplash.com/photo-1603572161235-cdc0524b5c3c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1300&q=80",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/37d5d0161195695.63c10570dde0b.png",
     title: "California.",
     author: "Photo by ",
     location: "Del Valle Regional Park, CA, US",
@@ -90,7 +90,7 @@ export const photos = [
   {
     id: 8,
     slug: "sekiz",
-    src: "https://images.unsplash.com/photo-1501436513145-30f24e19fcc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=688&q=80",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/f5a3c1156117289.63615f9f982fe.gif",
     title: "Istanbul",
     author: "Photo by ",
     location: "Del Valle Regional Park, CA, US",
@@ -101,7 +101,7 @@ export const photos = [
   {
     id: 9,
     slug: "dokuz",
-    src: "https://cdn.dribbble.com/userupload/4400775/file/original-796d72392c1a1aa3dfa5e9a89bc11144.jpg?compress=1&resize=752x",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/1400_opt_1/ba613e137673249.637cd09e4038c.jpg",
     title: "Istanbul",
     author: "Photo by ",
     location: "Del Valle Regional Park, CA, US",
@@ -178,7 +178,7 @@ export const photos = [
   {
     id: 16,
     slug: "onalti",
-    src: "https://cdn.dribbble.com/userupload/2501677/file/original-15bcba0b46476e79b5a460c447167789.jpg?compress=1&resize=1024x768",
+    src: "https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/59d7ee151539393.630e030018194.jpg",
     title: "Istanbul",
     author: "Photo by ",
     location: "Del Valle Regional Park, CA, US",
