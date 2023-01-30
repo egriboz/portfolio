@@ -23,7 +23,7 @@
 
 /* Limit site of the images */
 .column__item-imgwrap {
-  height: 500px;
+  /* height: 500px; */
 }
 .column__item-imgwrap img {
   padding: 40px;

@@ -4,7 +4,8 @@ import Head from "next/head";
 import React, { useState, useContext, useEffect, useCallback } from "react";
 import { useRouter } from "next/router";
 import Layout from "../components/Layout";
-import { photos } from "../data/photos";
+// import { photos } from "../data/photos";
+import { photos } from "../data/worksdata";
 import Image from "next/image";
 import { motion } from "framer-motion";
 
@@ -14,6 +15,8 @@ export default function Works() {
   const { asPath } = router;
   const [deltaY, setDeltaY] = useState(0);
   const [maxDelta, setMaxDelta] = useState(0);
+
+
 
   useEffect(() => {
     const deltaYFromLS = localStorage.getItem("deltaY");
@@ -69,6 +72,27 @@ export default function Works() {
   );
 }
 const MainItemsContainer = ({ deltaY, maxDelta }) => {
+  /* ===== */
+  console.log("photosLength: ", photos.length);
+
+  const array = photos;
+  const chunkSize = Math.floor(array.length / 3);
+
+  const chunk1 = array.slice(0, chunkSize);
+  const chunk1Length = chunk1.length;
+  const chunk2 = array.slice(chunkSize, chunkSize * 2);
+  const chunk2Length = chunk2.length;
+  const chunk3 = array.slice(chunkSize * 2);
+  const chunk3Length = chunk3.length;
+
+  console.log(chunk1);
+  console.log("chunk1Length", chunk1Length);
+  console.log(chunk2);
+  console.log("chunk2Length", chunk2Length);
+  console.log(chunk3);
+  console.log("chunk3Length", chunk3Length);
+  /* ===== */
+
   console.log("deltaY: ", deltaY, "maxDelta: ", maxDelta);
   let style_first = {
     transform: `translateY(-${maxDelta - deltaY}px)`
@@ -88,58 +112,7 @@ const MainItemsContainer = ({ deltaY, maxDelta }) => {
       <section className="main_items_container_child">
         <div className="container-content left" style={style_first}>
 
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a0" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/9.ea63bab4.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a1" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/10.57de09c7.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a2" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/11.ba790930.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a3" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/12.c3a8d893.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a4" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/13.3bd52250.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a5" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/14.b7263516.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a6" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/15.55bda21b.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a7" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/16.eb88393b.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="a8" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/17.3450839a.jpg" alt="title" />
-            </picture>
-          </motion.div>
-
-        </div>
-      </section>
-      <section className="main_items_container_child">
-        <div className="container-content right" style={style_second}>
-
-          {photos.map((photo, indexOf) => (
+          {chunk1.map((photo, indexOf) => (
             <motion.div layoutId={`${photo.id}`}
               whileHover={{ scale: 1.05 }}
               transition={{ ease: "easeOut", duration: .3 }}
@@ -149,7 +122,7 @@ const MainItemsContainer = ({ deltaY, maxDelta }) => {
 
               // transition={{ duration: 1 }}
 
-              className="container-content-block" key={photo.title}>
+              className="container-content-block" key={photo.slug}>
               <Link
                 scroll={false}
                 href={{
@@ -176,53 +149,80 @@ const MainItemsContainer = ({ deltaY, maxDelta }) => {
         </div>
       </section>
       <section className="main_items_container_child">
+        <div className="container-content right" style={style_second}>
+
+          {chunk2.map((photo, indexOf) => (
+            <motion.div layoutId={`${photo.id}`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ ease: "easeOut", duration: .3 }}
+              // initial={{ opacity: 0 }}
+              // animate={{ opacity: 1 }}
+              // exit={{ opacity: 1 }}
+
+              // transition={{ duration: 1 }}
+
+              className="container-content-block" key={photo.slug}>
+              <Link
+                scroll={false}
+                href={{
+                  pathname: `/works/${photo.slug}`,
+                  query: { indexOf: indexOf + chunk1Length },
+                }}
+              >
+                <a>
+                  <img
+
+                    src={photo.src}
+                    alt={photo.title}
+                    style={{
+                      // opacity: "1 !important",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                  />
+                </a>
+              </Link>
+            </motion.div>
+          ))}
+
+        </div>
+      </section>
+      <section className="main_items_container_child">
         <div className="container-content left" style={style_first}>
 
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b1" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/9.ea63bab4.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b2" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/10.57de09c7.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b3" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/11.ba790930.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b4" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/12.c3a8d893.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b5" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/13.3bd52250.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b6" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/14.b7263516.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b7" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/15.55bda21b.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b8" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/16.eb88393b.jpg" alt="title" />
-            </picture>
-          </motion.div>
-          <motion.div transition={{ ease: "easeOut", duration: .3 }} whileHover={{ scale: 1.05 }} layoutId="b9" className="container-content-block">
-            <picture>
-              <img src="https://tympanus.net/Development/ColumnScroll/17.3450839a.jpg" alt="title" />
-            </picture>
-          </motion.div>
+          {chunk3.map((photo, indexOf) => (
+            <motion.div layoutId={`${photo.id}`}
+              whileHover={{ scale: 1.05 }}
+              transition={{ ease: "easeOut", duration: .3 }}
+              // initial={{ opacity: 0 }}
+              // animate={{ opacity: 1 }}
+              // exit={{ opacity: 1 }}
+
+              // transition={{ duration: 1 }}
+
+              className="container-content-block" key={photo.slug}>
+              <Link
+                scroll={false}
+                href={{
+                  pathname: `/works/${photo.slug}`,
+                  query: { indexOf: indexOf + chunk1Length + chunk2Length },
+                }}
+              >
+                <a>
+                  <img
+
+                    src={photo.src}
+                    alt={photo.title}
+                    style={{
+                      // opacity: "1 !important",
+                      objectFit: "cover",
+                      objectPosition: "center",
+                    }}
+                  />
+                </a>
+              </Link>
+            </motion.div>
+          ))}
 
         </div>
       </section>

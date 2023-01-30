@@ -3,7 +3,8 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
-import { photos } from "../data/photos";
+// import { photos } from "../data/photos";
+import { photos } from "../data/worksdata";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
@@ -122,7 +123,7 @@ export default function Test() {
 
         <div id="gallery" className="grid grid-cols-4 gap-4">
           {photos.map((photo, indexOf) => (
-            <div className="tile" key={photo.title}>
+            <div className="tile" key={photo.slug}>
               <Link
                 scroll={false}
 

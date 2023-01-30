@@ -12,7 +12,8 @@ import Image from "next/image";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import { useEffect, useContext, useState } from "react";
-import { photos } from "../../data/photos";
+// import { photos } from "../data/photos";
+import { photos } from "../../data/worksdata";
 import { motion, AnimatePresence } from "framer-motion";
 import { LoremIpsum } from "react-lorem-ipsum";
 import Pagination from "../../components/Pagination";
@@ -207,8 +208,7 @@ const PhotoDetail = () => {
                               onClick={() => onPageChange(item.id)}
                               className={styles.pageLink}
                             >
-                              indexOf:={indexOf}-{item.title}:{indexOf}:
-                              {currentPage}---
+                              {indexOf}-{item.title}-{currentPage}
                             </a>
                           </Link>
                         </li>

@@ -2,7 +2,8 @@ import Link from "next/link";
 import Head from "next/head";
 import Layout from "../components/Layout";
 import { useEffect, useContext } from "react";
-import { photos } from "../data/photos";
+// import { photos } from "../data/photos";
+import { photos } from "../data/worksdata";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
@@ -23,7 +24,7 @@ export default function Home() {
           {photos.map((photo, indexOf) => (
             <Link
               scroll={false}
-              key={photo.title}
+              key={photo.slug}
               href={{
                 pathname: `/works/${photo.slug}`,
                 query: { indexOf: indexOf },
