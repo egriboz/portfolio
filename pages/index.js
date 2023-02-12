@@ -52,3 +52,12 @@ export default function Home() {
     </>
   );
 }
+// export async function getStaticProps() {
+//   const data = await fetch('http://localhost:3000/worksdata.json')
+//   const photos = await data.json()
+//   return {
+//     props: {
+//       photos
+//     }
+//   }
+// }
