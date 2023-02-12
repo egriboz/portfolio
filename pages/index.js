@@ -3,12 +3,12 @@ import Head from "next/head";
 import Layout from "../components/Layout";
 import { useEffect, useContext } from "react";
 // import { photos } from "../data/photos";
-import { photos } from "../data/worksdata";
+// import { photos } from "../data/worksdata";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import Script from "next/script";
 
-export default function Home() {
+export default function Home({ photos }) {
 
   return (
     <>
@@ -53,7 +53,7 @@ export default function Home() {
   );
 }
 export async function getStaticProps() {
-  const data = await fetch('https://portfolio-egriboz.vercel.app/photos.json')
+  const data = await fetch('https://portfolio-egriboz.vercel.app/worksdata.json')
   const photos = await data.json()
   return {
     props: {
